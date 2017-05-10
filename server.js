@@ -13,7 +13,7 @@ app.use(express.static('html'));
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 5000, function () {
   console.log('Yale Management Services is Running.')
 })
 
