@@ -53,7 +53,7 @@
   /** HEADER DEFAULT **/
   .header-default { padding-bottom:0px; }
   .header-default .header-details { position:relative; border-bottom:1px solid rgba(0, 0, 0, 0.1); }
-  .header-default .header-item { width:33.33% !important; float:left; font-size:12px; margin:5px 0px; padding:5px 15px 5px 15px; }
+  .header-default .header-item { width:50% !important; float:left; font-size:12px; margin:5px 0px; padding:5px 15px 5px 15px; }
   .header-default .header-item table { width:auto; }
   .header-default .header-search table { width:100%; }
   .header-default .header-item span { font-size:13px; }

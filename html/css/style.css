@@ -48,6 +48,13 @@ body {
 	background:#ebf1f5;
 }
 
+#animate-header {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
 .container { position:relative; }
 
 .module { position:relative; padding:70px 0px 70px 0px; }
@@ -411,7 +418,7 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 .navbar-toggle .icon-bar { background:#838893; }
 
 /* MAIN MENU */
- .navbar-collapse.collapse { position:relative; z-index:1000; }
+ .navbar-collapse.collapse { position:relative; z-index:1000;}
 
  .main-menu-wrap {
  	position:absolute;
