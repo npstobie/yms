@@ -1910,6 +1910,22 @@ a:hover { color:#68b4e8; text-decoration:none; }
 	text-align: center
 }
 
+.header-item-text {
+	color: #464646;
+	outline:0 !important;
+	-webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -ms-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+
+.header-item-text:hover { color:#68b4e8; text-decoration:none; }
+
+.mobile-buttons {
+	margin-bottom: 20px;
+}
+
 .contact-email {
 	padding-left: 0px;
 	padding-right: 0px;

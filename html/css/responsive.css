@@ -193,7 +193,7 @@
   .header-default .header-search td > .fa { display:block; }
   .header-default .header-search { border-right:1px solid rgba(0, 0, 0, 0.1); }
   .header-default .header-search table { width:auto; }
-  .header-default .header-item:hover .header-item-text { display:block; }
+  .header-default .header-item:hover { display:block; }
 
   /* SUBHEADER */
   .subheader.subheader-slider .slider-simple-buttons .button { width:70%; }
@@ -258,3 +258,10 @@
     -moz-columns:1;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .services .service-item {
+    margin-bottom: 65px;
+  }
+}
+

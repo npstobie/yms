@@ -135,24 +135,25 @@ jQuery(document).ready(function($) {
 	//FIXED HEADER
 	/***************************************************************************/
 	var navToggle = $('.header-default .navbar-toggle');
-	// var mainMenuWrap = $('.header-default .main-menu-wrap');
+	var mainMenuWrap = $('.header-default .main-menu-wrap');
 	
-	if ($(window).scrollTop() > 80) { 
-		navToggle.addClass('fixed'); 
-		// mainMenuWrap.addClass('fixed');
-	}
-
-
-	$(window).bind('scroll', function () {
-		if ($(window).scrollTop() > 80) {
-		    navToggle.addClass('fixed');
-		    // mainMenuWrap.addClass('fixed');
-		} else {
-		    navToggle.removeClass('fixed');
-		    // mainMenuWrap.removeClass('fixed');
+	if ($(window).width() > 990) {
+		if ($(window).scrollTop() > 80 && $(window).width() > 990) { 
+			navToggle.addClass('fixed'); 
+			mainMenuWrap.addClass('fixed');
 		}
-	});
 
+
+		$(window).bind('scroll', function () {
+			if ($(window).scrollTop() > 80  && $(window).width() > 990) {
+			    navToggle.addClass('fixed');
+			    mainMenuWrap.addClass('fixed');
+			} else {
+			    navToggle.removeClass('fixed');
+			    mainMenuWrap.removeClass('fixed');
+			}
+		});
+	}
 	
 	/***************************************************************************/
 	//INITIALIZE BLOG CREATIVE
