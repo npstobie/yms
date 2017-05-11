@@ -1,3 +1,5 @@
+var formatted_data;
+
 function formatListingData(listing_data) {
   var formatted_listings = [];
   var properties = listing_data.RentLinx.Properties[0].Property
@@ -98,29 +100,29 @@ function initialize(listings) {
   var mapOptions = {
     zoom: 11,
     scrollwheel: false,
-    center: new google.maps.LatLng(34.0522, -118.2437)
+    center: new google.maps.LatLng(34.172871, -118.437706)
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
 
   // createMarkers(listings);
 
-  var markers = [];
+  var markers = {};
   var content_strings = [];
-  var info_windows = [];
+  var info_windows = {};
   
-  function createEventListener(num){
-    google.maps.event.addListener(markers[num], 'click', function() {
+  function createEventListener(id){
+    google.maps.event.addListener(markers[id], 'click', function() {
       if (prev_info_window) {
          prev_info_window.close();
       }
-      prev_info_window = info_windows[num];
-      info_windows[num].open(map, markers[num]);
+      prev_info_window = info_windows[id];
+      info_windows[id].open(map, markers[id]);
     });
   }
 
   for (var i=0; i<listings.length; i++) {
-    markers[i] = new google.maps.Marker({
+    markers[listings[i].listing_id] = new google.maps.Marker({
       position: new google.maps.LatLng(listings[i].latitude, listings[i].longitude),
       map: map,
       icon: 'images/pin.png'
@@ -139,11 +141,9 @@ function initialize(listings) {
     listings[i].title ? content_strings[i] += ('<p>' + listings[i].title + '</p>') : content_strings[i] += ('<p>Available Now!</p>')
     content_strings[i] += '<div class="apply-buttons"><a href="' + listings[i].description_link + '" class="button small pop-up-button">View Details</a>' + '<a href="' + listings[i].application_link + '" class="button small pop-up-button">Apply Now</a></div><br/></div>';
 
-    // content_strings[i] = '<div class="info-box"><img src="' + listings[i].photo + '" class="info-box-img" alt="" /><h4>' + listings[i].street_address + '</h4><p>' + (listings[i].title || "Available Now!") + '</p><a href="' + listings[i].description_link + '" class="button small">View Details</a>' + '<a href="' + listings[i].application_link + '" class="button small">View Details</a><br/></div>';
+    info_windows[listings[i].listing_id] = new google.maps.InfoWindow({ content: content_strings[i] });
 
-    info_windows[i] = new google.maps.InfoWindow({ content: content_strings[i] });
-
-    createEventListener(i)
+    createEventListener(listings[i].listing_id)
   }
 }
 
@@ -152,10 +152,112 @@ $.get("/listing_data")
     if (data.RentLinx === undefined){
       debugger
     }
-    google.maps.event.addDomListener(window, 'load', function(){initialize(formatListingData(data))});
+    formatted_data = formatListingData(data);
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('loc')) {
+      sortByArea(urlParams.get('loc'))
+    }
+    createListingItems(formatted_data);
+    google.maps.event.addDomListener(window, 'load', function(){initialize(formatted_data)});
   })
   .fail(function(a,b){
     debugger
   })
 
+// to any person who ever has to touch this block of code... I sincerely apologize
+function createListingItems(listings) {
+  var listing_blocks = {};
+  for (var i=0; i<listings.length; i++) {
+    var block = '<div class="col-lg-6 col-md-6"><div class="property shadow-hover"><a class="property-img"><div class="img-fade"></div><div class="property-tag button status">For Rent</div><div class="property-price">';
+    if (listings[i].rent){
+      block += listings[i].rent.toString();
+    }
+    block +=  ' <span>Per Month</span></div><div class="property-color-bar"></div><img src="'
+    if (listings[i].photo) {
+      block += listings[i].photo
+    } else {
+      block += 'https://cdn.dribbble.com/users/22251/screenshots/803201/no-photo-grey.png'
+    }
+    block += '" alt="Link Broken" /></a><div class="property-content"><div class="property-title"><h4><a>'
+    if (listings[i].title) {
+      block += listings[i].title;
+    } else {
+      block += 'Beautiful Home'
+    }
+    block += '</a></h4><p class="property-address"><i class="fa fa-map-marker icon"></i>'
+    
+    if (listings[i].street_address) {
+      block += listings[i].street_address;
+    } else {
+      block += 'Visit Listing for Address'
+    }
+    block += '</p></div><table class="property-details"><tr><td class="<listing-btns></listing-btns>"><i class="fa fa-bed"></i> '
+    if (listings[i].beds) {
+      block += listings[i].beds
+    } else {
+      block += 'N/A'
+    }
+    block += '</td><td class="<listing-btns></listing-btns>"><i class="fa fa-tint"></i> '
+    if (listings[i].full_baths || listings[i].half_baths) {
+      num = parseInt(listings[i].full_baths) + parseInt(listings[i].half_baths)
+      block += num
+    } else {
+      block += 'N/A'
+    }
+    block += '</td><td class="<listing-btns></listing-btns>"><i class="fa fa-expand"></i> '
+    if (listings[i].square_feet) {
+      block += (listings[i].square_feet + ' Sq Ft')
+    } else {
+      block += 'N/A'
+    }
+    block += '</td></tr></table></div><div class="property-footer listing-btns"><a href="'
+    block += listings[i].description_link
+    block += '" class="button small pad-btn">View Details</a><a href="'
+    block += listings[i].application_link
+    block += '" class="button small pad-btn">Apply Now</a><div class="clear"></div></div></div></div>'
+
+    listing_blocks[listings[i].listing_id] = block;
+  }
+  appendProperties(listing_blocks);
+}
+
+function appendProperties(html){
+  var pair = false;
+  var full_block = "";
+  for (key in html) {
+    if (pair) {
+      full_block += html[key];
+      full_block += '</div>'
+      pair = false;
+    } else {
+      full_block += '<div class="row">'
+      full_block += html[key];
+      pair = true;
+    }
+  }
+  document.getElementById('property-list').innerHTML += full_block;
+}
+
+var sfv = [91201, 91303, 91306, 91307, 91311, 91316, 91324, 91331, 91335, 91342, 91343, 91344, 91345, 91356, 91364, 91372, 91401, 91402, 91413, 91423, 91501, 91601, 91604, 91608, 91617]
+
+var hollywood = [90028, 90038, 90068, 90069,90046, 90048, 90004, 90029]
+
+var westside = [90405, 90291, 90066, 90404, 90405, 90402, 90401, 90403, 90292, 90064, 90025, 90024, 90049]
+
+var los_angeles = []
+
+var valid_areas = ['los_angeles', 'sfv', 'hollywood', 'westside']
+
+function sortByArea(area) {
+  if (valid_areas.includes(area)) {
+    // $("#")
+    by_zip = [];
+    for (var i=0; i<formatted_data.length; i++) {
+      if (eval(area).includes(parseInt(formatted_data[i].zip))) {
+        by_zip.push(formatted_data[i])
+      }
+    }
+    formatted_data = by_zip;
+  }
+}
 

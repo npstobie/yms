@@ -17,18 +17,26 @@ app.listen(process.env.PORT || 5000, function () {
   console.log('Yale Management Services is Running.')
 })
 
+
 var data = ""
 var parsedData = ""
-https.get('https://www.rentlinx.com/_database/yalemanagementservices_rentlinx.xml', function(res) {
-  if (res.statusCode >= 200 && res.statusCode < 400) {
-    res.on('data', function(data_) { data += data_.toString(); });
-    res.on('end', function() {
-      parser.parseString(data, function(err, result) {
-				parsedData = result
-      });
-    });
-  }
-})
+
+function getListings(){
+	https.get('https://www.rentlinx.com/_database/yalemanagementservices_rentlinx.xml', function(res) {
+		console.log(res.statusCode)
+	  if (res.statusCode >= 200 && res.statusCode < 400) {
+	    res.on('data', function(data_) { data += data_.toString(); });
+	    res.on('end', function() {
+	      parser.parseString(data, function(err, result) {
+					parsedData = result
+	      });
+	    });
+	  }
+	})
+}
+
+getListings();
+setInterval(getListings, 1800000);
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');

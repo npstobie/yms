@@ -818,7 +818,7 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 .property:hover .property-color-bar { width:100%; }
 
 .property-img { position:relative; display:block; }
-.property-img img { max-width:100%; height:auto; }
+.property-img img { max-width:100%; height:267px; object-fit:cover; }
 
 .property-price {
 	color:white;
@@ -1893,7 +1893,21 @@ a:hover { color:#68b4e8; text-decoration:none; }
 }
 
 .pop-up-button {
-	margin: 5px;
+	margin-right: 10px;
+	margin-top: 5px;
+}
+
+.pad-btn {
+	margin: 3px;
+	color: white !important;
+}
+
+.pad-btn:hover {
+	color: #68b4e8 !important;
+}
+
+.listing-btns {
+	text-align: center
 }
 
 .contact-email {
