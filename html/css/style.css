@@ -112,14 +112,12 @@ h5 { font-size:20px; }
 a { 
 	color:#e53935;
 	outline:0 !important;
-	-webkit-transition: all 0.2s linear;
-    -moz-transition: all 0.2s linear;
-    -ms-transition: all 0.2s linear;
-    -o-transition: all 0.2s linear;
-    transition: all 0.2s linear;
+	-webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -ms-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
 }
-
-a:hover { color:#68b4e8; text-decoration:none; }
 
 .shadow-hover { transition: all 0.2s linear; }
 .shadow-hover:hover { box-shadow:0px 10px 25px rgba(0, 0, 0, 0.15); }
@@ -698,7 +696,8 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 .subheader.google-maps { background:#e1e5f1; padding:0; height:715px; position:static; }
 .subheader.google-maps .container { position:static;}
 #map-canvas { width:100%; height:715px; position:absolute; z-index:0; }
-.info-box-img { width:180px; margin-right:20px; float:left;  }
+.info-box-img { width:180px; margin-right:20px; float:left; display: inline-block; }
+.info-box-title {display: inline-block;}
 .info-box p { color:black; }
 
 .subheader.google-maps.horizontal, .subheader.google-maps.horizontal #map-canvas { height:600px; }
@@ -1809,10 +1808,6 @@ footer .divider { background:rgba(255, 255, 255, 0.1); }
 	padding-top: 70px;
 }
 
-.for-landlords {
-	color: black;
-}
-
 .president-header {
 	margin-bottom: 10px;
 }
@@ -1879,6 +1874,26 @@ li p {
 
 .red-strong {
 	color: #c0392b;
+}
+
+a[class=home-link] {
+	color: #464646;
+	outline:0 !important;
+	-webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -ms-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+
+a:hover { color:#68b4e8; text-decoration:none; }
+
+.apply-buttons {
+	display: inline-block;
+}
+
+.pop-up-button {
+	margin: 5px;
 }
 
 .contact-email {
