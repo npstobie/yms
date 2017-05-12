@@ -344,28 +344,28 @@ function appendProperties(html){
       pair = true;
     }
   }
-  document.getElementById('property-list').innerHTML += full_block
+  setTimeout(function(){document.getElementById('property-list').innerHTML += full_block},3000)
   $('.property-listing-map').hide().show(0);
 }
 
-function appendGridProperties(html){
-  var pair = 0;
-  var full_block = "";
-  for (key in html) {
-    if (pair === 2) {
-      full_block += html[key];
-      full_block += '</div>'
-      pair = 0;
-    } else {
-      full_block += '<div class="row">'
-      full_block += html[key];
-      pair += 1;
-    }
-  }
-  setTimeout(function(){document.getElementById('property-list').innerHTML += full_block},2000)
-  // document.getElementById('property-list').innerHTML += full_block
-  // $('.property-listing-map').hide().show(0);
-}
+// function appendGridProperties(html){
+//   var pair = 0;
+//   var full_block = "";
+//   for (key in html) {
+//     if (pair === 2) {
+//       full_block += html[key];
+//       full_block += '</div>'
+//       pair = 0;
+//     } else {
+//       full_block += '<div class="row">'
+//       full_block += html[key];
+//       pair += 1;
+//     }
+//   }
+//   setTimeout(function(){document.getElementById('property-list').innerHTML += full_block},2000)
+//   document.getElementById('property-list').innerHTML += full_block
+//   $('.property-listing-map').hide().show(0);
+// }
 
 var sfv = [91201, 91303, 91306, 91307, 91311, 91316, 91324, 91331, 91335, 91342, 91343, 91344, 91345, 91356, 91364, 91372, 91401, 91402, 91413, 91423, 91501, 91601, 91604, 91608, 91617]
 
