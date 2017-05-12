@@ -106,7 +106,6 @@ function formatListingData(listing_data) {
       formatted_listings.push(listing);
     }   
   }
-  console.log(formatted_listings);
   return formatted_listings;
 }
 
@@ -168,7 +167,7 @@ function reGet() {
   $.get("/listing_data")
     .done(function(data){
       if (data.RentLinx === undefined){
-        // window.location = '/home'
+        window.location = '/home'
       }
       formatted_data = formatListingData(data);
       urlParams = new URLSearchParams(window.location.search);
@@ -183,7 +182,7 @@ function reGet() {
       google.maps.event.addDomListener(window, 'load', function(){initialize(formatted_data)});
     })
     .fail(function(err){
-      // window.location = '/home'
+      window.location = '/home'
     })
 }
 
@@ -205,7 +204,7 @@ $.get("/listing_data")
     google.maps.event.addDomListener(window, 'load', function(){initialize(formatted_data)});
   })
   .fail(function(err){
-    // window.location = '/home'
+    window.location = '/home'
   })
 
 // to any person who ever has to touch this block of code... I sincerely apologize
@@ -268,7 +267,7 @@ function createListingItems(listings) {
   });
   
   if (listings.length === 0) {
-    $('#property-list').append("<h4>We could not find any properties " + area_sentences[urlParams.get('loc')] + ". <a href='/listings-map'>Click Here</a> to see all of our available listings.</h4>")
+    document.getElementById('property-list').innerHTML += "<h4>We could not find any properties " + area_sentences[urlParams.get('loc')] + ". <a href='/listings-map'>Click Here</a> to see all of our available listings.</h4>"
     $('#property-list').hide();
     $('#property-list').get(0).offsetHeight;
     $('#property-list').show();
@@ -348,7 +347,7 @@ function appendProperties(html){
       pair = true;
     }
   }
-  $('#property-list').append(full_block);
+  document.getElementById('property-list').innerHTML += full_block
   $('#property-list').hide();
   $('#property-list').get(0).offsetHeight;
   $('#property-list').show();
@@ -368,7 +367,7 @@ function appendGridProperties(html){
       pair += 1;
     }
   }
-  $('#property-list').append(full_block);
+  document.getElementById('property-list').innerHTML += full_block
   $('#property-list').hide();
   $('#property-list').get(0).offsetHeight;
   $('#property-list').show();
