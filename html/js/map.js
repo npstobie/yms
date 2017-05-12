@@ -168,7 +168,7 @@ function reGet() {
   $.get("/listing_data")
     .done(function(data){
       if (data.RentLinx === undefined){
-        window.location = '/home'
+        // window.location = '/home'
       }
       formatted_data = formatListingData(data);
       urlParams = new URLSearchParams(window.location.search);
@@ -183,7 +183,7 @@ function reGet() {
       google.maps.event.addDomListener(window, 'load', function(){initialize(formatted_data)});
     })
     .fail(function(err){
-      window.location = '/home'
+      // window.location = '/home'
     })
 }
 
@@ -205,7 +205,7 @@ $.get("/listing_data")
     google.maps.event.addDomListener(window, 'load', function(){initialize(formatted_data)});
   })
   .fail(function(err){
-    window.location = '/home'
+    // window.location = '/home'
   })
 
 // to any person who ever has to touch this block of code... I sincerely apologize
