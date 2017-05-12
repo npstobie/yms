@@ -16,6 +16,11 @@ var area_sentences = {
   westside: ' on the Westside'
 }
 
+setTimeout(function(){
+  document.getElementById("map-canvas").innerHTML += 'adfasdfasdfasdf'
+  $("#map-canvas").append('hahhaahhaahah')
+}, 2000)
+
 
 function formatListingData(listing_data) {
   var formatted_listings = [];
