@@ -16,12 +16,6 @@ var area_sentences = {
   westside: ' on the Westside'
 }
 
-setTimeout(function(){
-  document.getElementById("map-canvas").innerHTML += 'adfasdfasdfasdf'
-  $("#map-canvas").append('hahhaahhaahah')
-}, 2000)
-
-
 function formatListingData(listing_data) {
   var formatted_listings = [];
   var properties = listing_data.RentLinx.Properties[0].Property
@@ -368,8 +362,9 @@ function appendGridProperties(html){
       pair += 1;
     }
   }
-  document.getElementById('property-list').innerHTML += full_block
-  $('.property-listing-map').hide().show(0);
+  setTimeout(function(){document.getElementById('property-list').innerHTML += full_block},2000)
+  // document.getElementById('property-list').innerHTML += full_block
+  // $('.property-listing-map').hide().show(0);
 }
 
 var sfv = [91201, 91303, 91306, 91307, 91311, 91316, 91324, 91331, 91335, 91342, 91343, 91344, 91345, 91356, 91364, 91372, 91401, 91402, 91413, 91423, 91501, 91601, 91604, 91608, 91617]
