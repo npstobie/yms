@@ -268,9 +268,7 @@ function createListingItems(listings) {
   
   if (listings.length === 0) {
     document.getElementById('property-list').innerHTML += "<h4>We could not find any properties " + area_sentences[urlParams.get('loc')] + ". <a href='/listings-map'>Click Here</a> to see all of our available listings.</h4>"
-    $('#property-list').hide();
-    $('#property-list').get(0).offsetHeight;
-    $('#property-list').show();
+    $('.property-listing-map').hide().show(0);
   }
 }
 
@@ -348,9 +346,7 @@ function appendProperties(html){
     }
   }
   document.getElementById('property-list').innerHTML += full_block
-  $('#property-list').hide();
-  $('#property-list').get(0).offsetHeight;
-  $('#property-list').show();
+  $('.property-listing-map').hide().show(0);
 }
 
 function appendGridProperties(html){
@@ -368,9 +364,7 @@ function appendGridProperties(html){
     }
   }
   document.getElementById('property-list').innerHTML += full_block
-  $('#property-list').hide();
-  $('#property-list').get(0).offsetHeight;
-  $('#property-list').show();
+  $('.property-listing-map').hide().show(0);
 }
 
 var sfv = [91201, 91303, 91306, 91307, 91311, 91316, 91324, 91331, 91335, 91342, 91343, 91344, 91345, 91356, 91364, 91372, 91401, 91402, 91413, 91423, 91501, 91601, 91604, 91608, 91617]
