@@ -348,7 +348,7 @@ function appendProperties(html){
   document.getElementById('property-list').innerHTML += full_block
   $('.property-listing-map').hide().show(0);
 }
-
+document.getElementById('property-list').innerHTML += 'asdfasdfasdf'
 function appendGridProperties(html){
   var pair = 0;
   var full_block = "";
