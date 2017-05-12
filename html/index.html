@@ -2,11 +2,11 @@
 <html lang="en">
   <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="description" content="Homely - Responsive Real Estate Template">
-  <meta name="author" content="Rype Creative [Chris Gipple]">
+  <meta name="description" content="Yale Management Services, Inc.">
+  <meta name="author" content="Nick Stobie">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homely | A real estate theme</title>
+  <title>YMS | Property Management</title>
 
   <!-- CSS file links -->
   <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -86,7 +86,7 @@
           <li><a href="/tenants">Tenants</a></li>
           <li><a href="/owners">Owners</a></li>
           <li><a href="/about">About Us</a></li>
-          <li><a href="/listings">Listings</a></li>
+          <li><a href="/listings-map">Listings</a></li>
         </ul>
         <div class="clear"></div>
 
@@ -101,7 +101,21 @@
 <section class="subheader simple-search">
   <div class="container">
     <h1>Find your new home today.</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec risus egestas, vestibulum arcu.</p>
+    <p>Browse our available listings in the areas below.</p>
+    <div class="col-md-4 col-lg-4"></div>
+    <div class="dropdown col-md-4 col-lg-4 drop-pad">
+      <button class="btn btn-primary dropdown-toggle banner-drop" type="button" data-toggle="dropdown">Select Area
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu home-dropdown">
+        <li><a class="home-drop-link" href="/listings-map">All Listings</a></li>
+        <li><a class="home-drop-link" href="/listings-map?loc=sfv">San Fernando Valley</a></li>
+        <li><a class="home-drop-link" href="/listings-map?loc=los_angeles">Los Angeles</a></li>
+        <li><a class="home-drop-link" href="/listings-map?loc=westside">Westside</a></li>
+        <li><a class="home-drop-link" href="/listings-map?loc=hollywood">Hollywood</a></li>
+      </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="col-md-4 col-lg-4"></div>
 
 <!--     <form class="simple-search-form">
       <div class="tabs">
@@ -138,15 +152,15 @@
     </div>
 
     <div class="row">
-      <div class="col-lg-8 col-md-8">
-        <a href="#" class="property-cat property-cat-apartments">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <a href="/listings-map?loc=sfv" class="property-cat property-cat-sfv">
           <h3>San Fernando Valley</h3>
           <div class="color-bar"></div>
 <!--           <span class="button small">234 Properties</span>
  -->        </a>
       </div>
-      <div class="col-lg-4 col-md-4">
-        <a href="#" class="property-cat property-cat-houses">
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <a href="/listings-map?loc=hollywood" class="property-cat property-cat-hollywood">
           <h3>Hollywood</h3>
           <div class="color-bar"></div>
 <!--           <span class="button small">234 Properties</span>
@@ -155,15 +169,15 @@
     </div><!-- end row -->
 
     <div class="row">
-      <div class="col-lg-4 col-md-4">
-        <a href="#" class="property-cat property-cat-condos">
-          <h3>Westide</h3>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <a href="/listings-map?loc=westside" class="property-cat property-cat-westside">
+          <h3>Westside</h3>
           <div class="color-bar"></div>
 <!--           <span class="button small">234 Properties</span>
  -->        </a>
       </div>
-      <div class="col-lg-8 col-md-8">
-        <a href="#" class="property-cat property-cat-cozy">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <a href="/listings-map?loc=los_angeles" class="property-cat property-cat-la">
           <h3>Los Angeles</h3>
           <div class="color-bar"></div>
 <!--           <span class="button small">234 Properties</span>
@@ -195,7 +209,7 @@
         </a>
       </div>
       <div class="col-lg-3 col-md-3">
-        <a href="" class="home-link">
+        <a href="/listings-map" class="home-link">
           <div class="service-item shadow-hover">
             <i class="fa fa-home"></i>
             <h4>Check Vacancies</h4>
@@ -204,7 +218,7 @@
         </a>
       </div>
       <div class="col-lg-3 col-md-3">
-        <a href="" class="home-link">
+        <a href="https://yale.appfolio.com/connect/users/sign_in" class="home-link">
           <div class="service-item shadow-hover">
             <i class="fa fa-wrench"></i>
             <h4>Request Maintenance</h4>
@@ -213,7 +227,7 @@
         </a>
       </div>
       <div class="col-lg-3 col-md-3">
-        <a href="" class="home-link">
+        <a href="http://www.renterinsprotection.com/" class="home-link">
           <div class="service-item shadow-hover">
             <i class="fa fa-check-square"></i>
             <h4>Renters Insurance</h4>
@@ -237,8 +251,9 @@
 
   <div class="container">
     <div class="row">
+      <div class="col-lg-2 col-md-2"></div>
       <div class="col-lg-4 col-md-4">
-        <a href="" class="home-link">
+        <a href="https://yale.appfolio.com/oportal/users/log_in" class="home-link">
           <div class="service-item shadow-hover">
             <i class="fa fa-credit-card"></i>
             <h4>Owner Portal</h4>
@@ -247,7 +262,7 @@
         </a>
       </div>
       <div class="col-lg-4 col-md-4">
-        <a href="" class="home-link">
+        <a href="/owners" class="home-link">
           <div class="service-item shadow-hover">
             <i class="fa fa-home"></i>
             <h4>Management Services</h4>
@@ -255,77 +270,33 @@
           </div>
         </a>
       </div>
-      <div class="col-lg-4 col-md-4">
-        <a href="" class="home-link">
-          <div class="service-item shadow-hover">
-            <i class="fa fa-wrench"></i>
-            <h4>Case Studies</h4>
-            <p class="for-landlords">See how Yale Management Services has helped other property owners.</p>
-          </div>
-        </a>
-      </div>
+      <div class="col-lg-2 col-md-2"></div>
     </div><!-- end row -->
-  </div><!-- end container -->
-</section>
-
-<section class="module cta newsletter">
-  <div class="container">
-	<div class="row">
-		<div class="col-lg-7 col-md-7">
-			<h3>Sign up for our <strong>newsletter.</strong></h3>
-			<p>Lorem molestie odio. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-		</div>
-		<div class="col-lg-5 col-md-5">
-			<form method="post" id="newsletter-form" class="newsletter-form">
-				<input type="email" placeholder="Your email..." />
-				<button type="submit" form="newsletter-form"><i class="fa fa-send"></i></button>
-			</form>
-		</div>
-	</div><!-- end row -->
   </div><!-- end container -->
 </section>
 
 <footer id="footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-4 widget footer-widget">
-                <a class="footer-logo" href="index.html"><img src="images/logo-white.png" alt="Homely" /></a>
-                <p>Lorem ipsum dolor amet, consectetur adipiscing elit. Sed ut 
-                purus eget nunc ut dignissim cursus at a nisl. Mauris vitae 
-                turpis quis eros egestas tempor sit amet a arcu. Duis egestas 
-                hendrerit diam.</p>
+            <div class="col-lg-6 col-md-6 col-sm-6 widget footer-widget">
+                <a class="footer-logo" href="/home"><img src="images/logo-white.png" alt="Homely" /></a>
+                <p>For over 35 years, our family at Yale Management Services has prided ourselves on doing the right thing and, for us that means putting the needs of tenants and owners above all. We believe this is the key to a successful partnership and allows us to provide unparalleled service to our clients every day. Whether you’re searching for your ideal home or office building or looking for guidance and support with your own property investments, we have the tools to build a successful and long-lasting relationship.</p>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-4 widget footer-widget from-the-blog">
-                <h4><span>From the Blog</span> <img src="images/divider-half.png" alt="" /></h4>
-                <ul>
-                    <li>
-                      <a href="#"><h3>Open House at 123 Smith Drive</h3></a>
-                      <p>Vel fermentum ipsum. Quis molestie odio. Interdum et...<br/> <a href="#">Read More</a></p>
-                      <div class="clear"></div>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-4 widget footer-widget">
+            <div class="col-lg-6 col-md-6 col-sm-6 widget footer-widget">
+              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
                 <h4><span>Get In Touch</span> <img src="images/divider-half.png" alt="" /></h4>
-                <p>123 Smith Drive<br/>
-                Annapolis, MD 21012<br/>
+                <p>22020 Clarendon Street, #303<br/>
+                Woodland Hills, CA 91364<br/>
                 United States
                 </p>
-                <p>
-                <b class="open-hours">Open Hours</b><br/>
-                Mondy - Friday: 9 am - 5 pm<br/>
-                Saturday: 9 am - 1pm<br/>
-                Sunday: Closed
-                </p>
+              </div>
+              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                <div class='invisible-box'></div>
+                <p class="footer-phone"><i class="fa fa-envelope icon"></i>info@yalemanagementservices.com</p>
                 <p class="footer-phone"><i class="fa fa-phone icon"></i> (123) 456-7890</p>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 widget footer-widget newsletter">
-                <h4><span>Newsletter</span> <img src="images/divider-half.png" alt="" /></h4>
-                <p><b>Subscribe to our newsletter!</b> Vel lorem ipsum. Lorem molestie odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. </p>
-                <form class="subscribe-form" method="post" action="#">
-                    <input type="text" name="email" value="Your email" />
-                    <input type="submit" name="submit" value="SEND" class="button small alt" />
-                </form>
+                <p class="footer-ext">ext. 113  -  Leasing</p>
+                <p class="footer-ext">ext. 103  -  Maintenance</p>
+              </div>
             </div>
         </div><!-- end row -->
     </div><!-- end footer container -->

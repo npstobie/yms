@@ -529,7 +529,7 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 	background:#787c8a url(../images/1920x250.png) no-repeat center;
 	background-size:cover;
 	color:white;
-	padding-top:160px;
+	padding-top:80px;
 	padding-bottom:40px;
 	letter-spacing:0.5px;
 	position:relative;
@@ -998,14 +998,31 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 	background-repeat:no-repeat;
 	transition:all 0.2s;
 }
-.property-cat h3 { color:white; font-weight:200; }
-.property-cat:hover .color-bar { width:130px; }
 
-.property-cat-apartments { background-image:url(../images/1000x560.png);}
-.property-cat-houses { background-image:url(../images/1000x560.png);}
-.property-cat-condos { background-image:url(../images/1000x560.png);}
-.property-cat-waterfront { background-image:url(../images/1000x560.png);}
-.property-cat-cozy { background-image:url(../images/1000x560.png);}
+a:-webkit-any-link {
+	text-decoration: none;
+}
+
+
+.shadow-hover { transition: all 0.2s linear; }
+.shadow-hover:hover { box-shadow:0px 10px 25px rgba(0, 0, 0, 0.15); }
+
+
+.property-cat h3 { color:white; 
+	font-weight:200; 
+	text-shadow: 1.5px 1.5px #000000;
+}
+
+.property-cat:hover .color-bar { width:130px; }
+.property-cat:hover { 
+	transition: all 0.3s linear;
+	box-shadow:0px 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.property-cat-sfv { background-image:url(../images/sfv.jpg);}
+.property-cat-hollywood { background-image:url(../images/hollywood.jpg);}
+.property-cat-la { background-image:url(../images/la.jpg);}
+.property-cat-westside { background-image:url(../images/westside.png);}
 
 /** PROPERTY SINGLE **/
 .property-single-item { margin-bottom:45px; background:white; padding:30px; }
@@ -1787,7 +1804,7 @@ footer h4 { color:white; }
 footer .divider { background:rgba(255, 255, 255, 0.1); }
 
 .footer-logo { display:block; margin-bottom:20px; }
-.footer-logo img { width:150px; }
+.footer-logo img { width:200px; }
 
 .from-the-blog h3 {
 	color:white;
@@ -1926,7 +1943,51 @@ a:hover { color:#68b4e8; text-decoration:none; }
 	margin-bottom: 20px;
 }
 
+.disabled {
+	background-color: #ff7f7c !important;
+}
+
+.invisible-box {
+	height: 89px;
+}
+
 .contact-email {
 	padding-left: 0px;
 	padding-right: 0px;
+}
+
+.home-dropdown {
+	width: 100%;
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.home-drop-link {
+	text-align: center
+}
+
+.banner-drop {
+	width: 100%;
+	color: black;
+	background-color: rgba(255, 255, 255, 0.9) !important;
+	border: none;
+}
+
+.drop-pad {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.banner-drop:hover {
+	color: #68b4e8;
+}
+
+.footer-ext {
+	margin-bottom: 0px;
+	margin-left: 20px;
+}
+
+.footer-phone {
+	margin-bottom: 5px;
 }

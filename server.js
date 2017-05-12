@@ -62,8 +62,16 @@ app.get('/contact', function(req, res) {
   res.sendFile(__dirname + '/html/contact.html');
 });
 
-app.get('/listings', function(req, res) {
+app.get('/listings-map', function(req, res) {
   res.sendFile(__dirname + '/html/property-listing-map.html');
+});
+
+app.get('/get-started', function(req, res) {
+  res.sendFile(__dirname + '/html/get-started.html');
+});
+
+app.get('/listings-grid', function(req, res) {
+  res.sendFile(__dirname + '/html/property-listing-grid.html');
 });
 
 app.get('/listing_data', function(req, res){
@@ -80,10 +88,10 @@ app.post('/contact_form', function (req, res) {
   });
 
  	smtpTransport.sendMail({
-	  from: "Yale Management Services Website Contact Form <ymscontactform@gmail.com>",
-	  to: "Info @ Yale Management Services <npstobie@gmail.com>", // receiver
+	  from: "YMS Website Contact Form <ymscontactform@gmail.com>",
+	  to: "Info @ Yale Management Services <npstobie@gmail.com>, Adam Kanizo <nickmeanssuper@gmail.com>", // receiver
 	  subject: 'Contact Submission from YMS website: "' + (req.body.subject.length ? req.body.subject : "No Subject") + '"',
-	  html: "Senders Email: " + req.body.email + "<br>" + "Senders Phone: " + (req.body.phone.length ? req.body.phone : "No Phone") + "<br><br>" + req.body.message
+	  html: "<strong>Senders Name:</strong> " + req.body.name + "<br>" + "<strong>Senders Email:</strong> " + req.body.email + "<br>" + "<strong>Senders Phone:</strong> " + (req.body.phone.length ? req.body.phone : "No Phone") + "<br><br>" + "<strong>Message:</strong> " + req.body.message
  	}, function(error, response){
       if(error){
         console.log(error);
@@ -94,4 +102,34 @@ app.post('/contact_form', function (req, res) {
     	}
  			smtpTransport.close(); 
 	});
+});
+
+app.post('/get_started_form', function (req, res) {
+  var smtpTransport = nodemailer.createTransport({
+    service: "gmail", 
+    auth: {
+   	  user: "ymscontactform@gmail.com",
+   	  pass: "adamkanizo"
+    }
+  });
+
+ 	smtpTransport.sendMail({
+	  from: "YMS Website Tenant Activation Request <ymscontactform@gmail.com>",
+	  to: "Info @ Yale Management Services <npstobie@gmail.com>, Adam Kanizo <nickmeanssuper@gmail.com>", // receiver
+	  subject: 'Tenant Activation Link Request from YMS website',
+	  html: "<strong>First Name:</strong> " + req.body.first_name + "<br>" + "<strong>Last Name:</strong> " + req.body.last_name + "<br>" + "<strong>Email:</strong> " + req.body.email
+ 	}, function(error, response){
+      if(error){
+        console.log(error);
+        res.send(error)
+      } else {
+        console.log("Message sent: " + response.message);
+      	res.send(response);
+    	}
+ 			smtpTransport.close(); 
+	});
+});
+
+app.all('*', function(req, res) {
+  res.redirect("/home");
 });

@@ -328,13 +328,62 @@ jQuery(document).ready(function($) {
         }
     });
     if(!hasError) {
-    	$("#submit").click(function(){
-    		var email = getContactForm();
-    		sendEmail(email);
-    	})
+  		var email = getContactForm();
+  		sendEmail(email);
     }
     
     return false;   
   });
+
+  function getStartedForm() {
+  	var first_name = $("#first_name").val();
+  	var last_name = $("#last_name").val();
+  	var email = $("#email").val();
+  	
+  	return {
+  		first_name: first_name,
+  		last_name: last_name,
+  		email: email
+  	}
+  }
+
+  function sendGetStartedEmail(email) {
+  	$.post("/get_started_form", email)
+  		.done(function(data) {
+  	  	$('form#get-started').slideUp("fast", function() {                  
+  	      $(this).before('<p class="alert-box success"><i class="fa fa-check icon"></i><strong>Thanks!</strong> Your email has been delivered!</p>');
+  	  	});
+  		}).fail(function(data) {
+  			$('form#get-started').slideUp("fast", function() {                  
+  	      $(this).before('<p class="alert-box failure"><i class="fa fa-times icon"></i><strong>Oh no!</strong> Your email was not sent. If the problem persists, please email info@yalemanagementservices.com directly. Sorry for the inconvenience.</p>');
+  	  	});
+  		})
+  }
+	
+	$(document).on('submit', 'form#get-started', function() {
+	  $('form#get-started .error').remove();
+	  var hasError = false;
+	  $('.requiredField').each(function() {
+	      if($.trim($(this).val()) === '') {
+	          $(this).parent().find('label').append('<span class="error">This field is required!</span>');
+	          $(this).addClass('inputError');
+	          hasError = true;
+	      } else if($(this).hasClass('email')) {
+	          var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+	          if(!emailReg.test($.trim($(this).val()))) {
+	              $(this).parent().find('label').append('<span class="error">Sorry! You\'ve entered an invalid email.</span>');
+	              $(this).addClass('inputError');
+	              hasError = true;
+	          }
+	      }
+	  });
+	  if(!hasError) {
+	  	$("#submit").prop('disabled', true).addClass('disabled')
+  		var email = getStartedForm();
+  		sendGetStartedEmail(email);
+	  }
+	  
+	  return false;   
+	});
 
 });
